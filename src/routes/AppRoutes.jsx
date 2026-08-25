@@ -2,12 +2,11 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import PublicLayout from "../layouts/PublicLayout";
 import Login from "../pages/public/Login";
 import PrivateLayout from '../layouts/PrivateLayout';
-import Home from '../pages/private/Home';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import About from "../pages/private/About";
 import Products from "../pages/private/Products";
-import ContactUs from "../pages/private/ContactUs";
+import Cart from "../pages/private/Cart";
+import ProductDetails from "../pages/private/ProductDetails";
 import { useAuth } from "../hooks/useAuth";
 import { useEffect } from "react";
 
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "/main",
+        path: "/products",
         element: <PrivateRoute />,
         children: [
             {
@@ -38,20 +37,16 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: "",
-                        element: <Home />
-                    },
-                    {
-                        path: "about",
-                        element: <About />
-                    },
-                    {
-                        path: "products",
                         element: <Products />
                     },
                     {
-                        path: "contact",
-                        element: <ContactUs />
-                    }
+                        path: ":id",
+                        element: <ProductDetails />
+                    },
+                    {
+                        path: "cart",
+                        element: <Cart />
+                    },
                 ]
             },
         ],

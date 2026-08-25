@@ -5,20 +5,18 @@ const Navbar = () => {
     const { handleLogout } = useAuth();
 
     const navItems = [
-        { name: "Home", path: "/main" },
-        { name: "About", path: "/main/about" },
-        { name: "Products", path: "/main/products" },
-        { name: "Contact Us", path: "/main/contact" },
+        { name: "Products", path: "/products" },
+        { name: "Cart", path: "/products/cart" },
     ];
 
     return (
         <nav className="border-b border-slate-800 bg-slate-950/80">
-            <div className="w-full flex h-16 items-center justify-between px-6">
+            <div className="max-w-7xl m-auto flex h-16 items-center justify-between px-6">
                 <NavLink
-                    to="/main"
+                    to="/products"
                     className="text-xl font-bold tracking-tight text-white"
                 >
-                    MyPlatform
+                    NEO - Ecommerce
                 </NavLink>
 
                 <div className="flex items-center gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">

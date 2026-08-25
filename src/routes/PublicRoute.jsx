@@ -4,7 +4,7 @@ import { UserContext } from '../app/providers/AuthContextProvider';
 
 const PublicRoute = () => {
     const { loggedInUser } = useContext(UserContext);
-    if (loggedInUser) return <Navigate to={"/main"} />
+    if (loggedInUser) return <Navigate to={"/products"} />
     return <Outlet />
 }
 
