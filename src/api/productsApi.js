@@ -8,3 +8,8 @@ export const getAllProducts = async (pageParam, limit) => {
     const response = await api.get(`/products/search?${params}`);
     return response;
 }
+
+export const getProductById = async (id) => {
+    const response = await api.get(`/products/${id}`);
+    return response;
+};

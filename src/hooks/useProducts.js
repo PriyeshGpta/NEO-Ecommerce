@@ -4,6 +4,7 @@ import { getAllProducts } from "../api/productsApi"
 
 export const useProducts = () => {
     let limit = 8;
+
     const {
         data,
         error,

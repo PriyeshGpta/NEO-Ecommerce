@@ -9,6 +9,7 @@ import Cart from "../pages/private/Cart";
 import ProductDetails from "../pages/private/ProductDetails";
 import { useAuth } from "../hooks/useAuth";
 import { useEffect } from "react";
+import Loading from "../components/Loading";
 
 const router = createBrowserRouter([
     {
@@ -60,7 +61,7 @@ const AppRoutes = () => {
         hydrateUser();
     }, [])
 
-    if (isLoading) return <p className='h-screen w-screen bg-slate-950 text-white flex items-center justify-center'>Loading...</p>
+    if (isLoading) return <Loading />
 
     return <RouterProvider router={router} />
 }

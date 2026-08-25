@@ -3,12 +3,15 @@ import './index.css'
 import App from './app/App'
 import { AuthContextProvider } from './app/providers/AuthContextProvider'
 import { QueryProvider } from './app/providers/QueryProvider'
+import { CartContextProvider } from './app/providers/CartContextProvider'
 
 createRoot(document.getElementById('root')).render(
   <QueryProvider>
     <AuthContextProvider>
-      <App />
+      <CartContextProvider>
+        <App />
+      </CartContextProvider>
     </AuthContextProvider>
-  </QueryProvider>
+  </QueryProvider >
 
 )

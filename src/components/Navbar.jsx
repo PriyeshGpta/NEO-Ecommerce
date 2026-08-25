@@ -1,8 +1,10 @@
 import { NavLink } from "react-router";
 import { useAuth } from "../hooks/useAuth";
+import useCart from "../hooks/useCart";
 
 const Navbar = () => {
     const { handleLogout } = useAuth();
+    const { cartItems } = useCart();
 
     const navItems = [
         { name: "Products", path: "/products" },
@@ -16,7 +18,7 @@ const Navbar = () => {
                     to="/products"
                     className="text-xl font-bold tracking-tight text-white"
                 >
-                    NEO - Ecommerce
+                    Ecommerce
                 </NavLink>
 
                 <div className="flex items-center gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">
@@ -33,6 +35,12 @@ const Navbar = () => {
                             }
                         >
                             {item.name}
+
+                            {item.name === "Cart" && cartItems.length > 0 && (
+                                <span className="ml-2 rounded-full bg-indigo-600 px-2 py-0.5 text-xs text-white">
+                                    {cartItems?.length}
+                                </span>
+                            )}
                         </NavLink>
                     ))}
                 </div>

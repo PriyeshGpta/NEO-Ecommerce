@@ -1,7 +1,21 @@
+import { Minus, Plus, ShoppingCart } from "lucide-react";
+import useProductCard from "../hooks/useProductCard";
+
 const ProductCard = ({ product }) => {
+    const { addToCart,
+        increaseQuantity,
+        decreaseQuantity,
+        cartItem,
+        navigate } = useProductCard(product);
+
     return (
         <article className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900 transition hover:border-slate-700 hover:bg-slate-800/80">
-            <div className="aspect-square overflow-hidden bg-slate-800">
+            <div
+                onClick={() =>
+                    navigate(`/products/${product.id}`)
+                }
+                className="aspect-square cursor-pointer overflow-hidden bg-slate-800"
+            >
                 <img
                     src={product.images[0]}
                     alt={product.title}
@@ -22,18 +36,50 @@ const ProductCard = ({ product }) => {
                     {product.description}
                 </p>
 
-                <div className="mt-5 flex items-center justify-between">
-                    <span className="text-xl font-bold text-white">
+                <div className="mt-5">
+                    <p className="text-xl font-bold text-white">
                         ${product.price.toFixed(2)}
-                    </span>
+                    </p>
+                </div>
 
-                    <button className="cursor-pointer rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500 active:scale-[0.9]">
-                        View
-                    </button>
+                <div className="mt-3">
+                    {!cartItem ? (
+                        <button
+                            onClick={() => addToCart(product)}
+                            className="cursor-pointer flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500 active:scale-[0.98]"
+                        >
+                            <ShoppingCart size={17} />
+                            Add to Cart
+                        </button>
+                    ) : (
+                        <div className="flex h-10 items-center overflow-hidden rounded-lg border border-slate-700 bg-slate-950">
+                            <button
+                                onClick={() =>
+                                    decreaseQuantity(product.id)
+                                }
+                                className="cursor-pointer flex h-full w-12 items-center justify-center text-slate-300 transition hover:bg-slate-800 hover:text-white active:scale-95"
+                            >
+                                <Minus size={16} />
+                            </button>
+
+                            <span className="flex flex-1 items-center justify-center border-x border-slate-700 text-sm font-semibold text-white">
+                                {cartItem.quantity}
+                            </span>
+
+                            <button
+                                onClick={() =>
+                                    increaseQuantity(product.id)
+                                }
+                                className="cursor-pointer flex h-full w-12 items-center justify-center text-slate-300 transition hover:bg-slate-800 hover:text-white active:scale-95"
+                            >
+                                <Plus size={16} />
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </article>
-    )
-}
+    );
+};
 
-export default ProductCard
+export default ProductCard;

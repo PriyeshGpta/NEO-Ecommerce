@@ -1,3 +1,5 @@
+import ErrorMessage from "../../components/ErrorMessage";
+import Loading from "../../components/Loading";
 import ProductCard from "../../components/ProductCard"
 import SpinnerLoader from "../../components/SpinnerLoader";
 import { useProducts } from "../../hooks/useProducts"
@@ -6,9 +8,9 @@ import { useProducts } from "../../hooks/useProducts"
 const Products = () => {
     const { productsData, error, fetchNextPage, isLoading, hasNextPage, isFetchingNextPage } = useProducts();
 
-    if (isLoading && !isFetchingNextPage) return <p className='bg-slate-950 text-white pt-6 flex justify-center'>Loading...</p>
+    if (isLoading && !isFetchingNextPage) return <Loading />
 
-    if (error) return <p className="p-6 text-red-400">Error fetching products: {error.response.data.message} </p>
+    if (error) return <ErrorMessage error={error} />
 
     return (
         <section className="p-6">
