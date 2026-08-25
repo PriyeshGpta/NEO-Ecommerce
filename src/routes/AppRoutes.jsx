@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             },
         ],
     }
-])
+], { basename: "/NEO-Ecommerce" })
 
 const AppRoutes = () => {
     const { hydrateUser, isLoading } = useAuth()
