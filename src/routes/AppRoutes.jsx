@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createHashRouter, RouterProvider } from "react-router";
 import PublicLayout from "../layouts/PublicLayout";
 import Login from "../pages/public/Login";
 import PrivateLayout from '../layouts/PrivateLayout';
@@ -11,7 +11,7 @@ import { useAuth } from "../hooks/useAuth";
 import { useEffect } from "react";
 import Loading from "../components/Loading";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <PublicRoute />,
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             },
         ],
     }
-], { basename: "/NEO-Ecommerce" })
+])
 
 const AppRoutes = () => {
     const { hydrateUser, isLoading } = useAuth()
