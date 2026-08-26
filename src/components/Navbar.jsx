@@ -4,7 +4,7 @@ import useCart from "../hooks/useCart";
 
 const Navbar = () => {
     const { handleLogout } = useAuth();
-    const { cartItems } = useCart();
+    const { cartItems, cartCount } = useCart();
 
     const navItems = [
         { name: "Products", path: "/products" },
@@ -38,7 +38,7 @@ const Navbar = () => {
 
                             {item.name === "Cart" && cartItems.length > 0 && (
                                 <span className="ml-2 rounded-full bg-indigo-600 px-2 py-0.5 text-xs text-white">
-                                    {cartItems?.length}
+                                    {cartCount}
                                 </span>
                             )}
                         </NavLink>

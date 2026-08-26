@@ -13,6 +13,7 @@ const useCart = () => {
         removeFromCart,
         cartTotal,
         clearCart,
+        cartCount
     } = useContext(CartContext);
 
     const handlePurchase = () => {
@@ -29,6 +30,7 @@ const useCart = () => {
         decreaseQuantity,
         removeFromCart,
         cartTotal,
+        cartCount
     }
 }
 

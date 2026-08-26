@@ -13,16 +13,6 @@ export const CartContextProvider = ({ children }) => {
 
     const addToCart = (product) => {
         setCartItems((items) => {
-            const existing = items.find((item) => item.id === product.id);
-
-            if (existing) {
-                return items.map((item) =>
-                    item.id === product.id
-                        ? { ...item, quantity: item.quantity + 1 }
-                        : item
-                );
-            }
-
             return [...items, { ...product, quantity: 1 }];
         });
     };
@@ -32,7 +22,6 @@ export const CartContextProvider = ({ children }) => {
             items.filter((item) => item.id !== id)
         );
     };
-
 
     const increaseQuantity = (id) => {
         setCartItems((items) =>
