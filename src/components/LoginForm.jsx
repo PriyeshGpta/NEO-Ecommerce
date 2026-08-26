@@ -13,7 +13,7 @@ const LoginForm = () => {
         isLoading } = useAuth()
 
     return (
-        <div className='min-h-screen flex items-center justify-center px-4'>
+        <div className='min-h-screen flex flex-col items-center justify-center gap-4 px-4'>
             <form onSubmit={handleSubmit(onSubmitLogin)}>
                 <div className='flex flex-col gap-6 bg-slate-900 border border-slate-700 p-8 rounded-2xl'>
                     <h1 className='text-2xl font-bold text-white text-center'>
@@ -77,6 +77,7 @@ const LoginForm = () => {
 
                 </div>
             </form>
+            <p className="text-white text-[0.9rem]">Username: emilys / Password: emilyspass</p>
         </div>
     )
 }
