@@ -17,10 +17,10 @@ export const useAuth = () => {
         mode: 'onChange'
     })
 
-    const onSubmitLogin = async (values) => {
+    const onSubmitLogin = async ({ username, password }) => {
         setIsLoading(true);
         try {
-            const response = await loginUser(values);
+            const response = await loginUser({ username: username.trim(), password: password.trim() });
             const { accessToken, refreshToken, ...rest } = response;
             localStorage.setItem("accessToken", accessToken);
             localStorage.setItem("refreshToken", refreshToken);
